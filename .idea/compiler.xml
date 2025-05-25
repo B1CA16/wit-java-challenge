@@ -15,7 +15,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="calculator-api" options="-parameters" />
       <module name="calculator-app" options="" />
-      <module name="calculator-core" options="-parameters" />
+      <module name="calculator-core" options="" />
     </option>
   </component>
 </project>
