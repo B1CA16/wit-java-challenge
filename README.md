@@ -1,30 +1,32 @@
 # Calculator App
 
 A distributed calculator application built with Spring Boot and Apache Kafka, consisting of two modules:
-- **calculator-api**: REST API module that exposes calculator endpoints
-- **calculator-core**: Core calculation logic module that processes operations
+
+-   **calculator-api**: REST API module that exposes calculator endpoints
+-   **calculator-core**: Core calculation logic module that processes operations
 
 ## Architecture
 
 The application uses Apache Kafka for inter-module communication:
+
 1. The API module receives HTTP requests and publishes calculation requests to the Kafka topic `calculation-requests`
 2. The Core module consumes these requests, performs the calculations, and publishes the results to the Kafka topic `calculation-results`
 3. The API module consumes the result and returns the final response to the HTTP client
 
 ## Features
 
-- RESTful API with basic arithmetic operations (sum, subtract, multiply, divide)
-- Support for arbitrary precision decimal numbers using BigDecimal
-- Unique request identifiers with MDC logging propagation
-- SLF4J logging with file appenders
-- Docker containerization
-- Unit tests
+-   RESTful API with basic arithmetic operations (sum, subtract, multiply, divide)
+-   Support for arbitrary precision decimal numbers using BigDecimal
+-   Unique request identifiers with MDC logging propagation
+-   SLF4J logging with file appenders
+-   Docker containerization
+-   Unit tests
 
 ## Prerequisites
 
-- Java 24
-- Maven 3.6+
-- Docker and Docker Compose
+-   Java 24
+-   Maven 3.6+
+-   Docker and Docker Compose
 
 ## Building the Project
 
@@ -32,7 +34,6 @@ The application uses Apache Kafka for inter-module communication:
 
 ```bash
 git clone https://github.com/b1ca16/wit-java-challenge.git
-cd calculator-app
 ```
 
 ### 2. Build with Maven
@@ -78,10 +79,10 @@ The calculator API is available at `http://localhost:8080/api/calculator`
 
 ### Endpoints
 
-- **GET** `/api/calculator/sum?a={value}&b={value}` - Addition
-- **GET** `/api/calculator/subtract?a={value}&b={value}` - Subtraction
-- **GET** `/api/calculator/multiply?a={value}&b={value}` - Multiplication
-- **GET** `/api/calculator/divide?a={value}&b={value}` - Division
+-   **GET** `/api/calculator/sum?a={value}&b={value}` - Addition
+-   **GET** `/api/calculator/subtract?a={value}&b={value}` - Subtraction
+-   **GET** `/api/calculator/multiply?a={value}&b={value}` - Multiplication
+-   **GET** `/api/calculator/divide?a={value}&b={value}` - Division
 
 ### Examples
 
@@ -105,16 +106,18 @@ curl "http://localhost:8080/api/calculator/sum?a=1.123456789&b=2.987654321"
 ### Response Format
 
 **Success Response:**
+
 ```json
 {
-  "result": 3
+    "result": 3
 }
 ```
 
 **Error Response:**
+
 ```json
 {
-  "error": "Division by zero is not allowed."
+    "error": "Division by zero is not allowed."
 }
 ```
 
@@ -134,7 +137,8 @@ cd calculator-api && mvn test
 ## Logging
 
 Logs are written to:
-- Console output with request IDs in MDC
-- File logs in `logs/` directory:
-    - `calculator-api.log`
-    - `calculator-core.log`
+
+-   Console output with request IDs in MDC
+-   File logs in `logs/` directory:
+    -   `calculator-api.log`
+    -   `calculator-core.log`
